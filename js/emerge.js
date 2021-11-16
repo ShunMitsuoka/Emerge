@@ -209,24 +209,27 @@ const _setDraggable__emerge = function(self, mainContent){
 
     mainContent.ondragstart = function() {
         return false;
-      };
+    };
     mainContent.onmousedown = function(event){
         console.log('マウスダウン');
         //要素内の相対座標を取得
         x = event.pageX - this.offsetLeft;
         y = event.pageY - this.offsetTop;
         //ムーブイベントにコールバック
-        document.addEventListener("mousemove", onMouseMove, false);
-        mainContent.onmouseup = function(event){
-            console.log('マウスUp');
-            document.removeEventListener("mousemove", onMouseMove, false);
-            mainContent.onmouseup = null;
-        }
+        document.addEventListener("mousemove",onMouseMove);
+        document.addEventListener("mouseup",onMouseUp);
     }
     function onMouseMove(event){
-        // console.log('マウスMove');
+        console.log(event.pageY);
+        console.log(y);
+        console.log(event.pageY - y)
         mainContent.style.top = event.pageY - y + "px";
         mainContent.style.left = event.pageX - x + "px";
+    }
+    function onMouseUp(event){
+        console.log('マウスUp');
+        document.removeEventListener("mousemove",onMouseMove);
+        document.removeEventListener("mouseup",onMouseUp);
     }
     return mainContent;
 }
