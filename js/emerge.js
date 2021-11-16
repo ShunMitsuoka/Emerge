@@ -44,6 +44,7 @@ const _initOption__emerge = {
     this.option = Object.assign(_initOption__emerge, _option);
     this.target = _createTarget__emerge(this.option);
     this.emerge = null;
+    this.mainContent = null;
     return this;
 }
 
@@ -67,13 +68,15 @@ Emerge.prototype.open = function() {
         let overLay = _createOverLay__emerge(this);
         this.emerge.appendChild(overLay);
         // メインコンテント要素作成
-        let mainContent = _createMainContent__emerge(this);
-        this.emerge.appendChild(mainContent);
+        this.mainContent = _createMainContent__emerge(this);
+        this.emerge.appendChild(this.mainContent);
         // ターゲットにモーダル追加
         this.target.appendChild(this.emerge);
     }else{
         // 既にモーダルが存在する場合、クラス名closeをリムーブ
         this.emerge.classList.remove("close");
+        this.mainContent.style.top = null;
+        this.mainContent.style.left = null;
     }
     self.option.onOpen();
     // アニメーションの有無
@@ -206,7 +209,9 @@ const _setDraggable__emerge = function(self, mainContent){
     mainContent.style.cursor = 'move';
     let x;
     let y;
-
+    let preTop;
+    let preLeft;
+    
     mainContent.ondragstart = function() {
         return false;
     };
@@ -216,15 +221,20 @@ const _setDraggable__emerge = function(self, mainContent){
         x = event.pageX - this.offsetLeft;
         y = event.pageY - this.offsetTop;
         //ムーブイベントにコールバック
-        document.addEventListener("mousemove",onMouseMove);
-        document.addEventListener("mouseup",onMouseUp);
+        document.addEventListener("mousemove",onMouseMove, false);
+        document.addEventListener("mouseup",onMouseUp, false);
     }
     function onMouseMove(event){
-        console.log(event.pageY);
-        console.log(y);
-        console.log(event.pageY - y)
-        mainContent.style.top = event.pageY - y + "px";
-        mainContent.style.left = event.pageX - x + "px";
+        let top = event.pageY - y;
+        let left = event.pageX - x;
+        if(preTop == undefined || preTop - top > 2 || top - preTop > 2){
+            mainContent.style.top = top + "px";
+            preTop = top;
+        }
+        if(preLeft == undefined || preLeft - left > 2 || left - preLeft > 2){
+            mainContent.style.left = left + "px";
+            preLeft = left;
+        }
     }
     function onMouseUp(event){
         console.log('マウスUp');
