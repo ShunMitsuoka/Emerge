@@ -1,0 +1,74 @@
+.emerge {
+  position: relative;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.emerge.close {
+  display: none;
+}
+
+.emerge .emerge-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.emerge .emerge-main-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  border-radius: 0.5rem;
+  opacity: 0;
+}
+
+.emerge .emerge-main-content .emerge-main-content-hader {
+  width: 100%;
+  height: 50px;
+  background-color: #d8d8d8;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.emerge .emerge-main-content .emerge-content-header-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  margin-left: 1rem;
+  font-size: larger;
+  color: #202020;
+}
+
+.emerge .emerge-main-content .emerge-main-content-close {
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.8rem;
+}
+
+.emerge .emerge-main-content .emerge-main-content-body {
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+
+.emerge.open .emerge-main-content {
+  opacity: 1;
+}
+/*# sourceMappingURL=emerge.css.map */
