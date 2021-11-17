@@ -27,5 +27,5 @@ S-Emergeはシンプルなモーダル表示ライブラリです。
 </script>
 ```
 オプションとしてtargetを指定することで、その対象DOM要素を覆うようなモーダルを表示できます。  
-※この際、positionオプションを'relative'とする必要があります。
+※この際、positionオプションを'relative'とする必要があります。  
 targetは単純なDOM要素の他、jQueryオブジェクトを渡すことも可能です。
