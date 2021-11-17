@@ -40,7 +40,33 @@ contentHtmlオプションにHTML要素を設定することで、そのHTML要�
 ```
 オプションとしてtargetを指定することで、その対象DOM要素を覆うようなモーダルを表示できます。  
 ※この際、対象DOM要素のpositionを'relative'、Emergeのpositionオプションを'absolute'とする必要があります。  
-targetは単純なDOM要素の他、jQueryオブジェクトを渡すことも可能です。
+
+### targetの指定方法① 直接COM要素指定
+```javascript
+let emerge = new Emerge({
+    target: document.getElementById('target'),
+    position: 'absolute',
+});
+```
+上記の様に直接DOM要素を指定できます。
+
+### targetの指定方法② jQuery要素指定
+```javascript
+let emerge = new Emerge({
+    target: $('#target'),
+    position: 'absolute',
+});
+```
+上記の様にjQuery要素を指定できます。
+
+### targetの指定方法③ idを指定
+```javascript
+let emerge = new Emerge({
+    target: '#target',
+    position: 'absolute',
+});
+```
+上記の様にidセレクタを用いて指定できます。
 
 ## Option
 
