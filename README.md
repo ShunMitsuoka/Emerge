@@ -47,7 +47,7 @@ targetは単純なDOM要素の他、jQueryオブジェクトを渡すことも�
 以下のoptionが設定可能です。
 
 | option | 内容 | デフォルト |
-----|---- 
+----|----|---- 
 | position | モーダル要素のposition | 'fixed' |
 | target | モーダルが表示される要素 | document.querySelector('html body') |
 | animation | モーダルが表示時のアニメーションの有無| true |
