@@ -12,6 +12,18 @@ S-Emergeはシンプルなモーダル表示のjsライブラリです。
 ```
 デフォルトでは画面全体を覆うようにして、モーダルが表示されます。
 
+## モーダルの内容変更
+
+```html
+<script>
+  let emerge = new Emerge({
+      contentHtml: '<span>始めまして、S-Emerge!!</span>',
+  });
+  emerge.open();
+</script>
+```
+contentHtmlオプションにHTML要素を設定することで、そのHTML要素をモーダル内に表示可能です。
+
 ## 対象DOM要素を覆うモーダル表示方法
 
 ```html
