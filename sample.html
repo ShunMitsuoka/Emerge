@@ -7,7 +7,7 @@
 <style>
     #target{
         width: 300px;
-        height: 300px;
+        height: 2000px;
         background-color: blue;
         color: white;
     }
@@ -15,7 +15,7 @@
 </head>
 <body>
     <div>
-        <div id="target">
+        <div id="target" style="position: relative;">
             適用範囲
         </div>
         <button type="button" id="open" onclick="modalOpen()">open</button>
@@ -34,9 +34,10 @@
         // let emerge = new Emerge();
         $(function(){
             emerge = new Emerge({
-                // target: $('#target'),
-                // position: 'relative',
+                target: $('#target'),
+                position: 'absolute',
                 // contentHtml: $('#modal').html(),
+                contentHtml: '<span>始めまして、S-Emerge!!</span>',
                 draggable: true,
             });
         });
