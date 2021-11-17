@@ -120,17 +120,22 @@ Emerge.prototype.close = function() {
  * @returns overLay要素
  */
 const _createTarget__emerge = function(option){
-    let target;
-    // jQuery使用可能の場合かつtargetがjQuery要素
-    if(typeof jQuery !== 'undefined' && option.target instanceof jQuery){
-        target = option.target.get(0);
-    }else{
-        // targetがdom要素かどうか
+    try {
+        let target;
+        // jQuery使用可能の場合かつtargetがjQuery要素の場合
+        if(typeof jQuery !== 'undefined' && option.target instanceof jQuery){
+            target = option.target.get(0);
+            return target;
+        }
+        // targetがdom要素の場合
         if(option.target instanceof HTMLElement){
             target = option.target;
-        }
+            return target;
+        }   
+        throw new Error('targetが存在していません。');
+    } catch (e) {
+        _showError__emerge(e.message)
     }
-    return target;
 }
 
 /**
@@ -265,4 +270,12 @@ const _setDraggable__emerge = function(self, mainContent){
     }
 
     return mainContent;
+}
+
+/**
+ * メインコンテンツドラッグ移動処理設定
+ * @returns メインコンテンツ要素
+ */
+const _showError__emerge = function(msg){
+    console.error('s-emerge : ' + msg);
 }
