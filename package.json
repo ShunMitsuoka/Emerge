@@ -1,0 +1,15 @@
+{
+    "name": "msbox",
+    "version": "0.0.1",
+    "main": "js/msbox.js",
+    "description": "",
+    "keywords": [
+      "msbox",
+      "modal",
+      "box"
+    ],
+    "author": "ShunMitsuoka",
+    "license": "MIT",
+    "dependencies": {
+    }
+  }
