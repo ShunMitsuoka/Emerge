@@ -1,20 +1,20 @@
 /**
- * emerge.js
+ * msbox.js
  */
-var Emerge = function(_option){
-    // emerge初期化
+var MSBox = function(_option){
+    // msbox初期化
     this.init(_option);
 }
 
 /**
  * 初期オプション
  */
-const _initOption__emerge = {
+const _initOption__msbox = {
     position: 'fixed',
     target: document.querySelector('html body'),
     animation: true,  // アニメーションの有無
     animationTime: 200, // ms
-    headerTitle: 'Hello Emerge', // ヘッダータイトル
+    headerTitle: 'Hello MSBox', // ヘッダータイトル
     contentHtml: 'Hello World', // メインコンテンツ内容
     width: '50%', // width
     height: '50%', // height
@@ -37,44 +37,44 @@ const _initOption__emerge = {
 
 /**
  * モーダルinit
- * @returns Emerge
+ * @returns MSBox
  */
- Emerge.prototype.init = function(_option) {
+ MSBox.prototype.init = function(_option) {
     // オプション設定をマージ
-    this.option = Object.assign(_initOption__emerge, _option);
-    this.target = _createTarget__emerge(this.option);
-    this.emerge = null;
+    this.option = Object.assign(_initOption__msbox, _option);
+    this.target = _createTarget__msbox(this.option);
+    this.msbox = null;
     this.mainContent = null;
     return this;
 }
 
 /**
  * モーダルopen
- * @returns Emerge
+ * @returns MSBox
  */
-Emerge.prototype.open = function() {
+MSBox.prototype.open = function() {
     const self = this;
     // 既にモーダル要素があるかどうか
-    if(this.emerge == null){
+    if(this.msbox == null){
         // 最もベースとなるモーダル要素
-        let emerge = document.createElement("div");
-        this.emerge = emerge;
-        this.emerge.classList.add("emerge");
-        this.emerge.style.position = this.option.position;
+        let msbox = document.createElement("div");
+        this.msbox = msbox;
+        this.msbox.classList.add("msbox");
+        this.msbox.style.position = this.option.position;
         if(this.option.zIndex != null){
-            this.emerge.style.zIndex = this.option.zIndex;
+            this.msbox.style.zIndex = this.option.zIndex;
         }
         // オーバーレイ要素生成
-        let overLay = _createOverLay__emerge(this);
-        this.emerge.appendChild(overLay);
+        let overLay = _createOverLay__msbox(this);
+        this.msbox.appendChild(overLay);
         // メインコンテント要素作成
-        this.mainContent = _createMainContent__emerge(this);
-        this.emerge.appendChild(this.mainContent);
+        this.mainContent = _createMainContent__msbox(this);
+        this.msbox.appendChild(this.mainContent);
         // ターゲットにモーダル追加
-        this.target.appendChild(this.emerge);
+        this.target.appendChild(this.msbox);
     }else{
         // 既にモーダルが存在する場合、クラス名closeをリムーブ
-        this.emerge.classList.remove("close");
+        this.msbox.classList.remove("close");
         this.mainContent.style.top = null;
         this.mainContent.style.left = null;
     }
@@ -82,34 +82,34 @@ Emerge.prototype.open = function() {
     // アニメーションの有無
     if(this.option.animation){
         setTimeout(function(){
-            self.emerge.classList.add("open");
+            self.msbox.classList.add("open");
             self.option.onOpened();
         },0);
     }else{
-        self.emerge.classList.add("open");
+        self.msbox.classList.add("open");
         self.option.onOpened();
     }
     return this;
 }
 /**
  * モーダルclose
- * @returns Emerge
+ * @returns MSBox
  */
-Emerge.prototype.close = function() {
+MSBox.prototype.close = function() {
     const self = this;
     // アニメーションの有無
     self.option.onClose();
     if(self.option.animation){
         setTimeout(function(){
-            self.emerge.classList.remove("open");
+            self.msbox.classList.remove("open");
             setTimeout(function(){
-                self.emerge.classList.add("close");
+                self.msbox.classList.add("close");
                 self.option.onClosed();
             },self.option.animationTime);
         },0);
     }else{
-        self.emerge.classList.remove("open");
-        self.emerge.classList.add("close");
+        self.msbox.classList.remove("open");
+        self.msbox.classList.add("close");
         self.option.onClosed();
     }
     return this;
@@ -120,7 +120,7 @@ Emerge.prototype.close = function() {
  * HTML要素, jQuery要素、id文字列を許容
  * @returns overLay要素
  */
-const _createTarget__emerge = function(option){
+const _createTarget__msbox = function(option){
     try {
         let target;
         // jQuery使用可能の場合かつtargetがjQuery要素の場合
@@ -148,7 +148,7 @@ const _createTarget__emerge = function(option){
         }
         throw new Error('targetが存在していません。');
     } catch (e) {
-        _showError__emerge(e.message)
+        _showError__msbox(e.message)
     }
 }
 
@@ -156,10 +156,10 @@ const _createTarget__emerge = function(option){
  * オーバーレイ要素作成関数
  * @returns overLay要素
  */
-const _createOverLay__emerge = function(self){
+const _createOverLay__msbox = function(self){
     // 対象要素を覆うオーバーレイを定義
     let overLay = document.createElement("div");
-    overLay.classList.add("emerge-overlay");
+    overLay.classList.add("msbox-overlay");
     // オーバーレイクリック時にモーダルを閉じる
     overLay.addEventListener("click", function() {
         self.close();
@@ -171,25 +171,25 @@ const _createOverLay__emerge = function(self){
  * メインコンテンツ要素作成関数
  * @returns メインコンテンツ要素
  */
-const _createMainContent__emerge = function(self){
+const _createMainContent__msbox = function(self){
     // 対象要素を覆うオーバーレイを定義
     let mainContent = document.createElement("div");
-    mainContent.classList.add("emerge-main-content");
+    mainContent.classList.add("msbox-main-content");
     // メインコンテンツスタイル設定
-    _setMainContenStyle__emerge(self, mainContent);
+    _setMainContenStyle__msbox(self, mainContent);
     // メインコンテンツヘッダー要素作成
     if(self.option.headerShow){
         let mainContentHeader = document.createElement("div");
-        mainContentHeader.classList.add("emerge-main-content-hader");
+        mainContentHeader.classList.add("msbox-main-content-hader");
         mainContent.appendChild(mainContentHeader);
         // ヘッダータイトル
         let headerTitle = document.createElement("div");
-        headerTitle.classList.add("emerge-content-header-title");
+        headerTitle.classList.add("msbox-content-header-title");
         headerTitle.textContent = self.option.headerTitle;
         mainContentHeader.appendChild(headerTitle);
         // 閉じるボタン作成
         let closeBtn = document.createElement("span");
-        closeBtn.classList.add("emerge-main-content-close");
+        closeBtn.classList.add("msbox-main-content-close");
         closeBtn.textContent = '×';
         mainContentHeader.appendChild(closeBtn);
         closeBtn.addEventListener("click", function() {
@@ -198,13 +198,13 @@ const _createMainContent__emerge = function(self){
     }
     // メインコンテンツbody要素
     let mainContentBody = document.createElement("div");
-    mainContentBody.classList.add("emerge-main-content-body");
+    mainContentBody.classList.add("msbox-main-content-body");
     mainContent.appendChild(mainContentBody);
     // メインコンテンツbodyに内容適応
     mainContentBody.innerHTML = self.option.contentHtml;
     // ドラッグ設定
     if(self.option.draggable){
-        _setDraggable__emerge(self, mainContent);
+        _setDraggable__msbox(self, mainContent);
     }
     return mainContent;
 }
@@ -213,7 +213,7 @@ const _createMainContent__emerge = function(self){
  * メインコンテンツスタイル設定
  * @returns メインコンテンツ要素
  */
-const _setMainContenStyle__emerge = function(self, mainContent){
+const _setMainContenStyle__msbox = function(self, mainContent){
     mainContent.style.transition = self.option.animationTime + 'ms';
     mainContent.style.width = self.option.width;
     mainContent.style.height = self.option.height;
@@ -224,11 +224,11 @@ const _setMainContenStyle__emerge = function(self, mainContent){
  * メインコンテンツドラッグ移動処理設定
  * @returns メインコンテンツ要素
  */
-const _setDraggable__emerge = function(self, mainContent){
+const _setDraggable__msbox = function(self, mainContent){
     let dragTarget = mainContent;
     // ヘッダー表示時は、ヘッダーのみドラッグ可能とする。
     if(self.option.headerShow){
-        dragTarget = mainContent.getElementsByClassName('emerge-main-content-hader')[0];
+        dragTarget = mainContent.getElementsByClassName('msbox-main-content-hader')[0];
     }
     // \drag用のスタイル設定
     dragTarget.style.cursor = 'move';
@@ -293,6 +293,6 @@ const _setDraggable__emerge = function(self, mainContent){
  * メインコンテンツドラッグ移動処理設定
  * @returns メインコンテンツ要素
  */
-const _showError__emerge = function(msg){
-    console.error('s-emerge : ' + msg);
+const _showError__msbox = function(msg){
+    console.error('s-msbox : ' + msg);
 }

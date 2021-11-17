@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Emere-js Sample</title>
-<link rel="stylesheet" href="./css/emerge.min.css">
+<title>MSBox-js Sample</title>
+<link rel="stylesheet" href="./css/msbox.min.css">
 <style>
     #target{
         width: 800px;
@@ -28,21 +28,21 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="./js/emerge.js"></script>
+    <script src="./js/msbox.js"></script>
     <script>
-        let emerge;
-        // let emerge = new Emerge();
+        let msbox;
+        // let msbox = new MSBox();
         $(function(){
-            emerge = new Emerge({
+            msbox = new MSBox({
                 target: $('#target'),
                 position: 'absolute',
                 // contentHtml: $('#modal').html(),
-                contentHtml: '<span>始めまして、S-Emerge!!</span>',
+                contentHtml: '<span>始めまして、S-MSBox!!</span>',
                 draggable: true,
             });
         });
         function modalOpen(){
-            emerge.open();
+            msbox.open();
         }
     </script>
 </body>

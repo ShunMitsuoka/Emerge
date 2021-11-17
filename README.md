@@ -1,13 +1,13 @@
-# S-Emerge
+# MSBox
 
-S-Emergeはシンプルなモーダル表示のjsライブラリです。
+MSBoxはシンプルなモーダル表示のjsライブラリです。
 
 ## 最もシンプルなモーダル表示方法
 
 ```html
 <script>
-  let emerge = new Emerge();
-  emerge.open();
+  let msbox = new MSBox();
+  msbox.open();
 </script>
 ```
 デフォルトでは画面全体を覆うようにして、モーダルが表示されます。
@@ -16,10 +16,10 @@ S-Emergeはシンプルなモーダル表示のjsライブラリです。
 
 ```html
 <script>
-  let emerge = new Emerge({
-      contentHtml: '<span>始めまして、S-Emerge!!</span>',
+  let msbox = new MSBox({
+      contentHtml: '<span>始めまして、S-MSBox!!</span>',
   });
-  emerge.open();
+  msbox.open();
 </script>
 ```
 contentHtmlオプションにHTML要素を設定することで、そのHTML要素をモーダル内に表示可能です。
@@ -31,19 +31,19 @@ contentHtmlオプションにHTML要素を設定することで、そのHTML要�
     適用範囲
 </div>
 <script>
-  let emerge = new Emerge({
+  let msbox = new MSBox({
       target: $('#target'),
       position: 'absolute',
   });
-  emerge.open();
+  msbox.open();
 </script>
 ```
 オプションとしてtargetを指定することで、その対象DOM要素を覆うようなモーダルを表示できます。  
-※この際、対象DOM要素のpositionを'relative'、Emergeのpositionオプションを'absolute'とする必要があります。  
+※この際、対象DOM要素のpositionを'relative'、MSBoxのpositionオプションを'absolute'とする必要があります。  
 
 ### targetの指定方法① 直接COM要素指定
 ```javascript
-let emerge = new Emerge({
+let msbox = new MSBox({
     target: document.getElementById('target'),
     position: 'absolute',
 });
@@ -52,7 +52,7 @@ let emerge = new Emerge({
 
 ### targetの指定方法② jQuery要素指定
 ```javascript
-let emerge = new Emerge({
+let msbox = new MSBox({
     target: $('#target'),
     position: 'absolute',
 });
@@ -61,7 +61,7 @@ let emerge = new Emerge({
 
 ### targetの指定方法③ idを指定
 ```javascript
-let emerge = new Emerge({
+let msbox = new MSBox({
     target: '#target',
     position: 'absolute',
 });
@@ -78,7 +78,7 @@ let emerge = new Emerge({
 | target | モーダルが表示される要素 | document.querySelector('html body') |
 | animation | モーダルが表示時のアニメーションの有無| true |
 | animationTime | モーダルが表示時のアニメーション時間(ms)| 200 |
-| headerTitle | モーダルのヘッダータイトル | 'Hello Emerge' |
+| headerTitle | モーダルのヘッダータイトル | 'Hello MSBox' |
 | contentHtml | モーダルコンテンツ内容 | 'Hello World' |
 | width | モーダル幅 | '50%' |
 | height | モーダル高さ | '50%' |

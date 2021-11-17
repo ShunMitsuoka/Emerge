@@ -1,4 +1,4 @@
-.emerge {
+.msbox {
   position: relative;
   display: block;
   top: 0;
@@ -7,11 +7,11 @@
   height: 100%;
 }
 
-.emerge.close {
+.msbox.close {
   display: none;
 }
 
-.emerge .emerge-overlay {
+.msbox .msbox-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@
   opacity: 0.5;
 }
 
-.emerge .emerge-main-content {
+.msbox .msbox-main-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -35,14 +35,14 @@
   opacity: 0;
 }
 
-.emerge .emerge-main-content .emerge-main-content-hader {
+.msbox .msbox-main-content .msbox-main-content-hader {
   width: 100%;
   height: 50px;
   background-color: #d8d8d8;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.emerge .emerge-main-content .emerge-content-header-title {
+.msbox .msbox-main-content .msbox-content-header-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,7 +55,7 @@
   color: #202020;
 }
 
-.emerge .emerge-main-content .emerge-main-content-close {
+.msbox .msbox-main-content .msbox-main-content-close {
   cursor: pointer;
   color: white;
   font-size: 2rem;
@@ -64,11 +64,11 @@
   right: 0.8rem;
 }
 
-.emerge .emerge-main-content .emerge-main-content-body {
+.msbox .msbox-main-content .msbox-main-content-body {
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 }
 
-.emerge.open .emerge-main-content {
+.msbox.open .msbox-main-content {
   opacity: 1;
 }
-/*# sourceMappingURL=emerge.css.map */
+/*# sourceMappingURL=msbox.css.map */

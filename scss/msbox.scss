@@ -1,6 +1,6 @@
 $header-height: 50px;
 
-.emerge{
+.msbox{
     position: relative;
     display: block;
     top: 0;
@@ -10,7 +10,7 @@ $header-height: 50px;
     &.close{
         display: none;
     }
-    .emerge-overlay{
+    .msbox-overlay{
         position: absolute;
         top: 0;
         left: 0;
@@ -19,7 +19,7 @@ $header-height: 50px;
         background-color: black;
         opacity: 0.5;
     }
-    .emerge-main-content{
+    .msbox-main-content{
         position: absolute;
         top: 50%;
         left: 50%;
@@ -31,13 +31,13 @@ $header-height: 50px;
         background-color: white;
         border-radius: 0.5rem;
         opacity: 0;
-        .emerge-main-content-hader{
+        .msbox-main-content-hader{
             width: 100%;
             height: $header-height;
             background-color: rgb(216, 216, 216);
             border-radius: 0.5rem 0.5rem 0 0;
         }
-        .emerge-content-header-title{
+        .msbox-content-header-title{
             display: flex;
             align-items: center;
             height: 100%;
@@ -45,7 +45,7 @@ $header-height: 50px;
             font-size: larger;
             color: rgb(32, 32, 32);
         }
-        .emerge-main-content-close{
+        .msbox-main-content-close{
             cursor: pointer;
             color: white;
             font-size: 2rem;
@@ -53,12 +53,12 @@ $header-height: 50px;
             top: 0.2rem;
             right: 0.8rem;
         }
-        .emerge-main-content-body{
+        .msbox-main-content-body{
             padding: 0.2rem 0.5rem 0.2rem 0.5rem;
         }
     }
     &.open{
-        .emerge-main-content{
+        .msbox-main-content{
             opacity: 1;
         }
     }
