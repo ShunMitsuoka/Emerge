@@ -206,40 +206,63 @@ const _setMainContenStyle__emerge = function(self, mainContent){
  * @returns メインコンテンツ要素
  */
 const _setDraggable__emerge = function(self, mainContent){
+    // \drag用のスタイル設定
     mainContent.style.cursor = 'move';
-    let x;
-    let y;
-    let preTop;
-    let preLeft;
-    
-    mainContent.ondragstart = function() {
-        return false;
+    // デバイス確認
+    let device = navigator.userAgent.match(/iphone|ipad|ipod|android/i) ? "sp" : "pc";
+    // デバイス別のイベント名を格納
+    let touchstart = device == "sp" ? "touchstart" : "mousedown";
+    let touchend = device == "sp" ? "touchend" : "mouseup";
+    let touchmove = device == "sp" ? "touchmove" : "mousemove";
+
+    let dragData = {
+        "start": false, "move": false, // flag
+        "initialX": null, "initialY": null, // タップ位置
+        "top": null, "left": null // 要素の初期位置
     };
-    mainContent.onmousedown = function(event){
-        console.log('マウスダウン');
-        //要素内の相対座標を取得
-        x = event.pageX - this.offsetLeft;
-        y = event.pageY - this.offsetTop;
-        //ムーブイベントにコールバック
-        document.addEventListener("mousemove",onMouseMove, false);
-        document.addEventListener("mouseup",onMouseUp, false);
-    }
-    function onMouseMove(event){
-        let top = event.pageY - y;
-        let left = event.pageX - x;
-        if(preTop == undefined || preTop - top > 2 || top - preTop > 2){
-            mainContent.style.top = top + "px";
-            preTop = top;
+
+    mainContent.addEventListener(touchstart, touchStart, false);
+
+    function touchStart(event) {
+        mainContent.style.transition = null;
+        event.preventDefault();
+        // 位置取得 デバイスに応じて取得対象を変える
+        let x = device == "sp" ? event.touches[0].clientX : event.clientX;
+        let y = device == "sp" ? event.touches[0].clientY : event.clientY;
+        // データ登録
+        dragData = {
+            "start": true, "move": false, // flag
+            "initialX": x, "initialY": y, // タップ位置
+            "top": this.offsetTop, "left": this.offsetLeft // 要素の初期位置
         }
-        if(preLeft == undefined || preLeft - left > 2 || left - preLeft > 2){
-            mainContent.style.left = left + "px";
-            preLeft = left;
+        // eventリスナー登録
+        document.addEventListener(touchend, touchEnd, false);
+        document.addEventListener(touchmove, touchMove, false);
+    }
+
+    function touchMove(event) {
+        if(dragData.start){
+            event.preventDefault();
+            // 位置取得 デバイスに応じて取得対象を変える
+            let x = device == "sp" ? event.touches[0].clientX : event.clientX;
+            let y = device == "sp" ? event.touches[0].clientY : event.clientY;
+            let moveX = x - dragData.initialX; // ドラッグ距離 X
+            let moveY = y - dragData.initialY; // ドラッグ距離 Y
+            if (moveX !== 0 || moveY !== 0) {  // ドラッグ距離が0以外だったら
+                mainContent.style.top = dragData.top + moveY + "px";
+                mainContent.style.left = dragData.left + moveX + "px";
+            }
         }
     }
-    function onMouseUp(event){
-        console.log('マウスUp');
-        document.removeEventListener("mousemove",onMouseMove);
-        document.removeEventListener("mouseup",onMouseUp);
+
+    function touchEnd(event) {
+        if(dragData.start){
+            dragData.start = false;
+            mainContent.style.transition = self.option.animationTime + 'ms';
+            document.removeEventListener(touchend, touchEnd);
+            document.removeEventListener(touchmove, touchMove);
+        }
     }
+
     return mainContent;
 }
