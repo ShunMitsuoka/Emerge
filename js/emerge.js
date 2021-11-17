@@ -117,6 +117,7 @@ Emerge.prototype.close = function() {
 
 /**
  * target設定関数
+ * HTML要素, jQuery要素、id文字列を許容
  * @returns overLay要素
  */
 const _createTarget__emerge = function(option){
@@ -131,7 +132,20 @@ const _createTarget__emerge = function(option){
         if(option.target instanceof HTMLElement){
             target = option.target;
             return target;
-        }   
+        }
+        // targetが文字列の場合
+        if(typeof (option.target) == "string" || option.target instanceof String){
+            // id
+            if(/^\#.+/.test(option.target)){
+                let id = option.target.slice(1);
+                target = document.getElementById(id);
+                if(target instanceof HTMLElement){
+                    return target;
+                }
+                throw new Error('idが"'+id+'"であるDOM要素が見つかりません。');
+            }
+            throw new Error('targetとして文字列を設定する場合、"#"から始まるidを指定してください。');
+        }
         throw new Error('targetが存在していません。');
     } catch (e) {
         _showError__emerge(e.message)
