@@ -225,8 +225,13 @@ const _setMainContenStyle__emerge = function(self, mainContent){
  * @returns メインコンテンツ要素
  */
 const _setDraggable__emerge = function(self, mainContent){
+    let dragTarget = mainContent;
+    // ヘッダー表示時は、ヘッダーのみドラッグ可能とする。
+    if(self.option.headerShow){
+        dragTarget = mainContent.getElementsByClassName('emerge-main-content-hader')[0];
+    }
     // \drag用のスタイル設定
-    mainContent.style.cursor = 'move';
+    dragTarget.style.cursor = 'move';
     // デバイス確認
     let device = navigator.userAgent.match(/iphone|ipad|ipod|android/i) ? "sp" : "pc";
     // デバイス別のイベント名を格納
@@ -240,7 +245,7 @@ const _setDraggable__emerge = function(self, mainContent){
         "top": null, "left": null // 要素の初期位置
     };
 
-    mainContent.addEventListener(touchstart, touchStart, false);
+    dragTarget.addEventListener(touchstart, touchStart, false);
 
     function touchStart(event) {
         mainContent.style.transition = null;
@@ -252,7 +257,7 @@ const _setDraggable__emerge = function(self, mainContent){
         dragData = {
             "start": true, "move": false, // flag
             "initialX": x, "initialY": y, // タップ位置
-            "top": this.offsetTop, "left": this.offsetLeft // 要素の初期位置
+            "top": mainContent.offsetTop, "left": mainContent.offsetLeft // 要素の初期位置
         }
         // eventリスナー登録
         document.addEventListener(touchend, touchEnd, false);
@@ -282,8 +287,6 @@ const _setDraggable__emerge = function(self, mainContent){
             document.removeEventListener(touchmove, touchMove);
         }
     }
-
-    return mainContent;
 }
 
 /**
