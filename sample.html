@@ -16,6 +16,7 @@
 <body>
     <div>
         <button type="button" id="open" onclick="modalOpen()">open</button>
+        <button type="button" id="" onclick="modalDestroy()">destroy</button>
         <div id="target" style="position: relative;">
             適用範囲
         </div>
@@ -43,6 +44,9 @@
         });
         function modalOpen(){
             msbox.open();
+        }
+        function modalDestroy() {
+            msbox.destroy();
         }
     </script>
 </body>

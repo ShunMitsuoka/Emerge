@@ -41,7 +41,8 @@ const _initOption__msbox = {
  */
  MSBox.prototype.init = function(_option) {
     // オプション設定をマージ
-    this.option = Object.assign(_initOption__msbox, _option);
+    let initOption = Object.assign({}, _initOption__msbox);
+    this.option = Object.assign(initOption, _option);
     this.target = _createTarget__msbox(this.option);
     this.msbox = null;
     this.mainContent = null;
@@ -112,6 +113,37 @@ MSBox.prototype.close = function() {
         self.msbox.classList.add("close");
         self.option.onClosed();
     }
+    return this;
+}
+/**
+ * モーダルoption設定
+ * @returns MSBox
+ */
+ MSBox.prototype.setOption = function(_option) {
+    // オプション設定をマージ
+    this.option = Object.assign(this.option, _option);
+    return this;
+}
+
+/**
+ * モーダルDOM要素を削除
+ * @returns MSBox
+ */
+ MSBox.prototype.detach = function() {
+    // オプション設定をマージ
+    if(this.msbox !== null){
+        this.msbox.parentNode.removeChild(this.msbox);
+    }
+    return this;
+}
+
+/**
+ * モーダルDOM要素を削除し、初期設定に戻す
+ * @returns MSBox
+ */
+ MSBox.prototype.destroy = function() {
+    this.detach();
+    this.init();
     return this;
 }
 
