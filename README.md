@@ -87,7 +87,20 @@ let msbox = new MSBox({
 ```
 上記の様にidセレクタを用いて指定できます。
 
-## Option
+## Methods 
+
+以下のmethodが使用可能です。
+
+| method | 内容 | 引数 | 戻り値 |
+----|----|----|---- 
+| open() | モーダルを開く | 無し | MSBox |
+| close() | モーダルを閉じる | 無し | MSBox |
+| setOption(options) | モーダルのoptionを更新 | options | MSBox |
+| init(options) | モーダル自身やoptionを初期化| options | MSBox |
+| detach() | モーダルDOM要素を削除 | 無し | MSBox |
+| destroy() | detach() and init() | 無し | MSBox |
+
+## Options
 
 以下のoptionが設定可能です。
 
