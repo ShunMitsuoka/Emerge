@@ -2,6 +2,25 @@
 
 MSBoxはシンプルなモーダル表示のjsライブラリです。
 
+## 使用方法
+
+### npmでのダウンロード
+
+```bash
+$ npm i msbox
+```
+
+### ファイル読み込み
+css読み込み
+```html
+<link rel="stylesheet" href="./src/css/msbox.min.css">
+```
+
+JavaScript読み込み
+```html
+<script src="./src/js/msbox.js"></script>
+```
+
 ## 最もシンプルなモーダル表示方法
 
 ```html
