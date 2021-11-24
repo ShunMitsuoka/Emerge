@@ -133,6 +133,7 @@ MSBox.prototype.close = function() {
     // オプション設定をマージ
     if(this.msbox !== null){
         this.msbox.parentNode.removeChild(this.msbox);
+        this.msbox = null;
     }
     return this;
 }
