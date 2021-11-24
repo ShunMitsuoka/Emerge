@@ -327,5 +327,5 @@ const _setDraggable__msbox = function(self, mainContent){
  * @returns メインコンテンツ要素
  */
 const _showError__msbox = function(msg){
-    console.error('s-msbox : ' + msg);
+    console.error('msbox : ' + msg);
 }
