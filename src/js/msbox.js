@@ -157,7 +157,7 @@ const _createTarget__msbox = function(option){
     try {
         let target;
         // jQuery使用可能の場合かつtargetがjQuery要素の場合
-        if(typeof jQuery !== 'undefined' && option.target instanceof jQuery){
+        if(typeof jQuery !== 'undefined' && option.target instanceof jQuery && typeof option.target.get(0) !== "undefined"){
             target = option.target.get(0);
             return target;
         }
