@@ -329,3 +329,5 @@ const _setDraggable__msbox = function(self, mainContent){
 const _showError__msbox = function(msg){
     console.error('msbox : ' + msg);
 }
+
+module.exports = MSBox;

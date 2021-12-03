@@ -1,6 +1,6 @@
 {
     "name": "msbox",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "src/js/msbox.js",
     "description": "",
     "keywords": [

@@ -21,6 +21,11 @@ JavaScript読み込み
 <script src="./src/js/msbox.js"></script>
 ```
 
+node.jsを使用して読み込み
+```js
+window.MSBox = require('msbox');
+```
+
 ## 最もシンプルなモーダル表示方法
 
 ```html
