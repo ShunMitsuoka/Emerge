@@ -53,6 +53,10 @@ $header-height: 50px;
             position: absolute;
             top: 0.2rem;
             right: 0.8rem;
+            font-weight: 600;
+            &.none-header{
+                color: gray;
+            }
         }
         .msbox-main-content-body{
             padding: 0.2rem 0.5rem 0.2rem 0.5rem;

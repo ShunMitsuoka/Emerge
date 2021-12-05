@@ -20,6 +20,7 @@ const _initOption__msbox = {
     height: '50%', // height
     zIndex: null, // z-index
     headerShow: true, // ヘッダー表示有無
+    closeBtnShow: true,
     onOpen : function(){
         // console.log('モーダル開く直前');
     },
@@ -210,6 +211,13 @@ const _createMainContent__msbox = function(self){
     mainContent.classList.add("msbox-main-content");
     // メインコンテンツスタイル設定
     _setMainContenStyle__msbox(self, mainContent);
+    // 閉じるボタン作成
+    let closeBtn = document.createElement("span");
+    closeBtn.classList.add("msbox-main-content-close");
+    closeBtn.textContent = '×';
+    closeBtn.addEventListener("click", function() {
+        self.close();
+    });
     // メインコンテンツヘッダー要素作成
     if(self.option.headerShow){
         let mainContentHeader = document.createElement("div");
@@ -220,14 +228,16 @@ const _createMainContent__msbox = function(self){
         headerTitle.classList.add("msbox-content-header-title");
         headerTitle.textContent = self.option.headerTitle;
         mainContentHeader.appendChild(headerTitle);
-        // 閉じるボタン作成
-        let closeBtn = document.createElement("span");
-        closeBtn.classList.add("msbox-main-content-close");
-        closeBtn.textContent = '×';
-        mainContentHeader.appendChild(closeBtn);
-        closeBtn.addEventListener("click", function() {
-            self.close();
-        });
+        if(self.option.closeBtnShow){
+            // 閉じるボタン追加
+            mainContentHeader.appendChild(closeBtn);
+        }
+    }else{
+        if(self.option.closeBtnShow){
+            // 閉じるボタン追加
+            closeBtn.classList.add("none-header");
+            mainContent.appendChild(closeBtn);
+        }
     }
     // メインコンテンツbody要素
     let mainContentBody = document.createElement("div");
@@ -330,4 +340,6 @@ const _showError__msbox = function(msg){
     console.error('msbox : ' + msg);
 }
 
-module.exports = MSBox;
+if(typeof module !== 'undefined'){
+    module.exports = MSBox;
+}

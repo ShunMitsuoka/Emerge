@@ -63,6 +63,11 @@
   position: absolute;
   top: 0.2rem;
   right: 0.8rem;
+  font-weight: 600;
+}
+
+.msbox .msbox-main-content .msbox-main-content-close.none-header {
+  color: gray;
 }
 
 .msbox .msbox-main-content .msbox-main-content-body {
