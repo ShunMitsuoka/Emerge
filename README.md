@@ -122,6 +122,7 @@ let msbox = new MSBox({
 | zIndex | モーダル全体（透過背景も含む）のz-index | null |
 | draggable | モーダルをドラッグで移動可能か | false |
 | headerShow | モーダルのヘッダーを表示するかどうか | true |
+| closeBtnShow | 閉じるボタンを表示するかどうか | true |
 | onOpen | モーダルが開く直前の処理 | function(){} |
 | onOpened | モーダルが開いた直後の処理 | function(){} |
 | onClose | モーダルが閉じる直前の処理 | function(){} |
