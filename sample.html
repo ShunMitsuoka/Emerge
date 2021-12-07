@@ -17,6 +17,8 @@
     <div>
         <button type="button" id="open" onclick="modalOpen()">open</button>
         <button type="button" id="" onclick="modalDestroy()">destroy</button>
+        <button type="button" id="" onclick="modalChange()">change</button>
+
         <div id="target" style="position: relative;">
             適用範囲
         </div>
@@ -40,7 +42,6 @@
                 // contentHtml: $('#modal').html(),
                 contentHtml: '<span>始めまして、S-MSBox!!</span>',
                 draggable: true,
-                headerShow: false,
                 closeBtnShow: false,
             });
         });
@@ -49,6 +50,11 @@
         }
         function modalDestroy() {
             msbox.destroy();
+        }
+        function modalChange() {
+            msbox.setOption({
+                contentHtml : '<span>変更されました、S-MSBox!!</span>',
+            });
         }
     </script>
 </body>

@@ -123,6 +123,12 @@ MSBox.prototype.close = function() {
  MSBox.prototype.setOption = function(_option) {
     // オプション設定をマージ
     this.option = Object.assign(this.option, _option);
+    // contentHtmlが変更されていた場合
+    if(_option.contentHtml){
+        // メインコンテンツbodyに内容適応
+        let mainContentBody = this.mainContent.getElementsByClassName('msbox-main-content-body')[0];
+        mainContentBody.innerHTML = this.option.contentHtml;
+    }
     return this;
 }
 
