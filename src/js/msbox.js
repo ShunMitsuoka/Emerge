@@ -1,7 +1,7 @@
 /**
  * msbox.js
  */
-var MSBox = function(_option){
+export let MSBox = function(_option){
     // msbox初期化
     this.init(_option);
 }
